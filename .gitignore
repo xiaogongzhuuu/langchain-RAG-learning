@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 
 # 忽略虚拟环境
-.env/
+.env
 venv/
 
 # 忽略日志和临时文件
@@ -12,3 +12,4 @@ venv/
 
 # 忽略 VS Code 配置
 .vscode/
+.venv
