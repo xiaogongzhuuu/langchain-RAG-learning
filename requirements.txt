@@ -1,0 +1,9 @@
+langchain==0.2.7
+langchain-community==0.2.7
+langchain-aws==0.1.11
+langchain-openai==0.1.16
+langchainhub==0.1.20
+chromadb==0.5.4
+wikipedia==1.4.0
+tavily-python==0.3.5
+python-dotenv==1.0.1
