@@ -8,3 +8,9 @@ wikipedia==1.4.0
 tavily-python==0.3.5
 python-dotenv==1.0.1
 langserve[all]
+streamlit
+openai
+langchain
+faiss-cpu
+PyMuPDF
+tiktoken
