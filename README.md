@@ -1,39 +1,63 @@
-# LangChain RAG 学习笔记
+# LangChain RAG 学习项目
 
-个人学习LangChain和RAG技术的实践项目。
+一个简单的文档问答系统，学习LangChain和RAG技术的入门项目。
 
-## 环境配置
+## 功能
 
-1. 安装依赖：
+- 上传文档进行智能问答
+- 支持普通问题回答
+- 基于OpenAI GPT模型
+
+## 快速开始
+
+### 1. 安装依赖
 ```bash
 pip install -r requirements.txt
 ```
 
-2. 创建 `.env` 文件，添加API密钥：
+### 2. 配置API密钥
+创建 `.env` 文件：
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY=你的OpenAI密钥
 ```
+
+### 3. 运行程序
+```bash
+streamlit run app.py
+```
+
+## 项目文件
+
+- `app.py` - 网页界面
+- `qa_chain.py` - 问答功能
+- `doc_processor.py` - 文档处理
+- `vector_store.py` - 向量存储
+- `docs/` - 示例文档
 
 ## 使用方法
 
-运行Jupyter Notebook：
+1. 打开网页 http://localhost:8501
+2. 输入问题
+3. 查看AI回答
+
+## 测试
+
+运行测试文件：
 ```bash
-jupyter notebook
+python test_processor.py
 ```
 
-打开 `langchain.ipynb` 开始学习。
+## 注意事项
 
-## 项目内容
+- 需要有效的OpenAI API密钥
+- 目前支持 .md 和 .txt 文件
+- 适合学习和实验使用
 
-- 基础LangChain使用
-- 提示词模板设计
-- 聊天机器人实现
-- RAG技术实践
+## 学习资源
 
-## 依赖包
+- [LangChain文档](https://python.langchain.com/)
+- [OpenAI API](https://platform.openai.com/docs)
 
-主要使用的库：
-- `langchain` - LLM应用框架
-- `langchain-openai` - OpenAI集成
-- `chromadb` - 向量数据库
-- `python-dotenv` - 环境变量管理
+---
+
+这是一个学习项目，欢迎提问和交流！
