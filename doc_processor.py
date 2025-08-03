@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
@@ -26,11 +26,12 @@ def load_and_split_documents(filepath):
 #拆分成段落
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
-        chunk_overlap=50
+        chunk_overlap=50,
+        separators=["\n\n", "\n", " ", ""],
     )
 
     chunks = splitter.split_text(text)
-    print(f"文件拆分完成，共{chunks}段")
+    print(f"文件拆分完成，共{len(chunks)}段")
     return chunks
 #文档向量化处理(利用上述load and split documents函数)
 def process_markdown_doc(filepath):

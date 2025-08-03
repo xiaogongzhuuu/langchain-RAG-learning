@@ -1,5 +1,5 @@
 import streamlit as st
-from qa_chain import smart_talk
+from qa_chain import smart_talk,ask_question
 from doc_processor import load_and_split_documents
 from vector_store import build_vectorstore_from_chunks
 
@@ -10,13 +10,19 @@ st.markdown("上传你的文档或直接提问，系统将自动选择最合适�
 vectorstore=None
 
 uploaded_file =st.file_uploader("上传你的文档pdf",type=["pdf"])
-if uploaded_file:
-    st.warning("你已上传文件，但目前文档处理尚未开启")
 
+chunks=process_markdown_doc(filepath)
 
+vectorstore=build_vectorstore_from_chunks(chunks)
+#if uploaded_file:
+    #st.warning("你已上传文件，但目前文档处理尚未开启")
 question=st.text_input("请输入你的问题")
 
 if question:
     st.write("正在思考中")
-    answer=ask_question(question)
-    st.success(answer)
+    try:
+        answer=smart_talk(question,st.session_state.vectorstore)
+        st.success("ai回答:")
+        st.write(answer)
+    except Exception as e:
+        st.error("回答问题时出错")
