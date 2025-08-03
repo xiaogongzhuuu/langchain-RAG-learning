@@ -11,6 +11,10 @@ vectorstore=None
 
 uploaded_file =st.file_uploader("上传你的文档pdf",type=["pdf"])
 
+temp_path = create_temp_file(uploaded_file.getvalue())  # 内存 → 磁盘
+filepath = process_doc(temp_path)                         # 磁盘 → 处理
+delete_temp_file(temp_path) 
+
 chunks=process_markdown_doc(filepath)
 
 vectorstore=build_vectorstore_from_chunks(chunks)
