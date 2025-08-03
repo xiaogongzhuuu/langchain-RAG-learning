@@ -2,7 +2,6 @@ import streamlit as st
 from qa_chain import smart_talk,ask_question
 from vector_store import build_vectorstore_from_chunks
 from doc_processor import process_markdown_doc,load_and_split_documents
-import fitz
 import os
 
 st.set_page_config(page_title="rag文档回答助手", page_icon="📄")

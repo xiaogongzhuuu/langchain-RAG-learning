@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-
 load_dotenv()
 
 openai_api_key=os.getenv("OPENAI_API_KEY")
