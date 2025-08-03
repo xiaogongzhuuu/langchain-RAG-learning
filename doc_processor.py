@@ -37,8 +37,6 @@ def load_and_split_documents(filepath):
 def process_markdown_doc(filepath):
     chunks=load_and_split_documents(filepath)
     if not chunks:
-        return [],[]
-    
-    vectors=embedding_model.embed_documents(chunks)
+        return []
     print("嵌入向量生成完成")
-    return chunks,vectors
+    return chunks
