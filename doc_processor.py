@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+import fitz
 load_dotenv()
 
 openai_api_key=os.getenv("OPENAI_API_KEY")
@@ -16,12 +16,15 @@ embedding_model=OpenAIEmbeddings()
 
 #文档加载
 def load_and_split_documents(filepath):
-    if not filepath.endswith((".md",".txt")):
-        print("当前只支持markdown或者txt文本文件")
-        return[]
+
+    ext=os.path.splitext(filepath)[1].lower()
+
+    if ext== ".pdf":
+        text=load_pdf(filepath)
     
-    with open(filepath,"r",encoding="utf-8") as f:
-        text=f.read()
+    elif ext==".txt" or ext==".md":
+         with open(filepath,"r",encoding="utf-8") as f:
+            text=f.read()
 #拆分成段落
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
@@ -39,3 +42,11 @@ def process_markdown_doc(filepath):
         return []
     print("嵌入向量生成完成")
     return chunks
+
+def load_pdf(file_path):
+    text=""
+    with fitz.open(file_path) as pdf:
+        for page in pdf:
+            text += page.get_text()
+    return text
+

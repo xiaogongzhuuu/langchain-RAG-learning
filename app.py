@@ -11,14 +11,15 @@ st.markdown("上传你的文档或直接提问，系统将自动选择最合适�
 if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = None
 
-uploaded_file =st.file_uploader("上传你的文档pdf",type=["md"])
+uploaded_file =st.file_uploader("上传你的文档",type=["md","pdf"])
 
 if uploaded_file is not None:
-    temp_path = "temp.md"
+    ext = os.path.splitext(uploaded_file.name)[1]
+    temp_path = f"temp{ext}"
     with open(temp_path, "wb") as f:
         f.write(uploaded_file.getvalue())
         
-    chunks=process_markdown_doc("temp.md")
+    chunks=process_markdown_doc(temp_path)
     os.remove(temp_path)
     st.session_state.vectorstore=build_vectorstore_from_chunks(chunks)
 
