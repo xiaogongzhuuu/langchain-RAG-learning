@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import fitz
+import streamlit as st
+import time
+
 load_dotenv()
 
 openai_api_key=os.getenv("OPENAI_API_KEY")
@@ -33,14 +36,19 @@ def load_and_split_documents(filepath):
     )
 
     chunks = splitter.split_text(text)
-    print(f"文件拆分完成，共{len(chunks)}段")
+    status = st.info(f"文件生成完成，共 {len(chunks)} 段")
+    time.sleep(1.5)
+    status.empty()
     return chunks
 #文档向量化处理(利用上述load and split documents函数)
 def process_markdown_doc(filepath):
     chunks=load_and_split_documents(filepath)
     if not chunks:
         return []
-    print("嵌入向量生成完成")
+    status = st.info("嵌入向量生成完成")
+    time.sleep(1.5)
+    status.empty()
+    
     return chunks
 
 def load_pdf(file_path):

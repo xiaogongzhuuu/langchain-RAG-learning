@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import ChatOpenAI
 import openai
+import streamlit as st
+import time
 load_dotenv()
 
 openai.api_key=os.getenv("OPENAI_API_KEY")
@@ -35,9 +37,6 @@ def smart_talk(question, vectorstore=None):
     if not docs :
         print("文档未检索到相关问题,使用GPT通识回答")
         return ask_question(question)
-    
-
-    print("使用rag增强检索回答")
 
     chain=load_qa_chain(llm,chain_type="stuff")
     return chain.run(input_documents=docs,question=question)
