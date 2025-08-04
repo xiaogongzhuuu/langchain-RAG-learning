@@ -25,7 +25,7 @@ if uploaded_file is not None and uploaded_file.name != st.session_state.get("las
         chunks=process_markdown_doc(temp_path)
         os.remove(temp_path)
         st.session_state.vectorstore=build_vectorstore_from_chunks(chunks)
-    status = st.info("文档上传成功")
+    status = st.success("文档上传成功")
     time.sleep(1.5)
     status.empty()
     st.session_state.uploaded = True 
