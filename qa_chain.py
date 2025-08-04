@@ -4,7 +4,6 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import ChatOpenAI
 import openai
 import streamlit as st
-import time
 load_dotenv()
 
 openai.api_key=os.getenv("OPENAI_API_KEY")

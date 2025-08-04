@@ -1,48 +1,67 @@
-# 📚 LangChain RAG 学习项目
+# RAG 文档问答系统
 
-基于 LangChain 和 RAG 技术的文档问答系统，个人学习 AI 应用开发的实践项目。
+基于 LangChain + OpenAI GPT-4 构建的智能文档问答应用，支持文档上传和智能检索问答。
 
-## ✨ 核心功能
+## 🚀 在线体验
 
-- 📄 **文档上传**：支持 Markdown/PDF 文档处理
-- 🔍 **智能检索**：基于向量相似性的文档检索
-- 💬 **问答系统**：RAG 增强回答 + 通用问答自动切换
-- 🎯 **Web 界面**：Streamlit 可视化交互界面
+**[🎯 项目演示地址](https://huggingface.co/spaces/xiaogongzhuuu/rag)**
 
-## 🛠️ 技术栈
+> 已部署到 Hugging Face Spaces，可直接在线体验完整功能
 
-- **LangChain** + **OpenAI GPT-4** + **FAISS 向量数据库**
-- **Streamlit Web 框架** + **Python**
+## 核心技术
 
-## 🚀 快速启动
+- **RAG 架构**：检索增强生成，结合文档检索和 LLM 生成
+- **向量检索**：FAISS 向量数据库 + OpenAI Embeddings
+- **智能路由**：自动判断使用文档知识或通用知识回答
+- **Web 界面**：Streamlit 构建用户交互界面
 
+## 功能特性
+
+- 📄 支持 Markdown/PDF 文档上传处理
+- 🔍 基于语义相似性的智能文档检索
+- 💬 RAG 增强回答 + 通用问答自动切换
+- 🎯 简洁易用的 Web 交互界面
+
+## 部署说明
+
+**本地运行**：
 ```bash
-# 安装依赖
+# 1. 安装依赖
 pip install -r requirements.txt
 
-# 配置 API 密钥
-echo "OPENAI_API_KEY=your_key" > .env
+# 2. 配置环境变量
+echo "OPENAI_API_KEY=your_api_key" > .env
+echo "OPENAI_API_BASE=your_api_base" >> .env  # 可选
 
-# 启动应用
+# 3. 启动应用
 streamlit run app.py
 ```
 
-## 📁 项目结构
+**在线体验**：
+- 项目已部署至 [Hugging Face Spaces](https://huggingface.co/spaces/xiaogongzhuuu/rag)
+- 支持实时文档上传和问答交互
+
+## 项目架构
 
 ```
-├── app.py              # 主应用界面
-├── qa_chain.py         # 问答逻辑
-├── doc_processor.py    # 文档处理
-├── vector_store.py     # 向量存储
-└── md/                 # 测试文档
+├── app.py              # Streamlit 主界面
+├── qa_chain.py         # 问答链逻辑
+├── doc_processor.py    # 文档处理与分块
+├── vector_store.py     # 向量存储管理
+└── md/                 # 测试文档目录
 ```
 
-## 🎯 技术要点
+## 技术实现
 
-- **文档处理**：文本分块 + 向量化嵌入
-- **检索增强**：相似性搜索 + GPT 生成
-- **智能路由**：基于检索结果自动选择回答策略
+**文档处理流程**：
+1. 文档上传 → 文本提取 → 分块处理
+2. 向量化嵌入 → FAISS 索引构建
+3. 用户提问 → 相似性检索 → GPT-4 生成回答
+
+**智能问答策略**：
+- 有相关文档：使用 RAG 模式回答
+- 无相关文档：切换到通用 GPT 问答
 
 ---
 
-💡 **学习成果**：掌握了 RAG 技术原理，熟悉 LangChain 框架应用，具备 AI 应用开发能力。
+*项目展示了 RAG 技术在实际应用中的完整实现，涵盖文档处理、向量检索、智能问答等核心环节。*

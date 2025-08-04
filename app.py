@@ -13,7 +13,7 @@ if "vectorstore" not in st.session_state:
 if "uploaded" not in st.session_state:
     st.session_state.uploaded = None
 
-uploaded_file =st.file_uploader("上传你的文档",type=["md","pdf"])
+uploaded_file =st.file_uploader("上传你的文档",type=["md","pdf"], accept_multiple_files=True)
 
 if uploaded_file is not None and uploaded_file.name != st.session_state.get("last_uploaded_filename"):
 
