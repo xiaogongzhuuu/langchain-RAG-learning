@@ -1,63 +1,48 @@
-# LangChain RAG 学习项目
+# 📚 LangChain RAG 学习项目
 
-一个简单的文档问答系统，学习LangChain和RAG技术的入门项目。
+基于 LangChain 和 RAG 技术的文档问答系统，个人学习 AI 应用开发的实践项目。
 
-## 功能
+## ✨ 核心功能
 
-- 上传文档进行智能问答
-- 支持普通问题回答
-- 基于OpenAI GPT模型
+- 📄 **文档上传**：支持 Markdown/PDF 文档处理
+- 🔍 **智能检索**：基于向量相似性的文档检索
+- 💬 **问答系统**：RAG 增强回答 + 通用问答自动切换
+- 🎯 **Web 界面**：Streamlit 可视化交互界面
 
-## 快速开始
+## 🛠️ 技术栈
 
-### 1. 安装依赖
+- **LangChain** + **OpenAI GPT-4** + **FAISS 向量数据库**
+- **Streamlit Web 框架** + **Python**
+
+## 🚀 快速启动
+
 ```bash
+# 安装依赖
 pip install -r requirements.txt
-```
 
-### 2. 配置API密钥
-创建 `.env` 文件：
-```env
-OPENAI_API_KEY=你的OpenAI密钥
-```
+# 配置 API 密钥
+echo "OPENAI_API_KEY=your_key" > .env
 
-### 3. 运行程序
-```bash
+# 启动应用
 streamlit run app.py
 ```
 
-## 项目文件
+## 📁 项目结构
 
-- `app.py` - 网页界面
-- `qa_chain.py` - 问答功能
-- `doc_processor.py` - 文档处理
-- `vector_store.py` - 向量存储
-- `docs/` - 示例文档
-
-## 使用方法
-
-1. 打开网页 http://localhost:8501
-2. 输入问题
-3. 查看AI回答
-
-## 测试
-
-运行测试文件：
-```bash
-python test_processor.py
+```
+├── app.py              # 主应用界面
+├── qa_chain.py         # 问答逻辑
+├── doc_processor.py    # 文档处理
+├── vector_store.py     # 向量存储
+└── md/                 # 测试文档
 ```
 
-## 注意事项
+## 🎯 技术要点
 
-- 需要有效的OpenAI API密钥
-- 目前支持 .md 和 .txt 文件
-- 适合学习和实验使用
-
-## 学习资源
-
-- [LangChain文档](https://python.langchain.com/)
-- [OpenAI API](https://platform.openai.com/docs)
+- **文档处理**：文本分块 + 向量化嵌入
+- **检索增强**：相似性搜索 + GPT 生成
+- **智能路由**：基于检索结果自动选择回答策略
 
 ---
 
-这是一个学习项目，欢迎提问和交流！
+💡 **学习成果**：掌握了 RAG 技术原理，熟悉 LangChain 框架应用，具备 AI 应用开发能力。
