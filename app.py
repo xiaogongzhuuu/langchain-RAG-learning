@@ -1,7 +1,7 @@
 import streamlit as st
-from qa_chain import smart_talk
-from vector_store import build_vectorstore_from_chunks
-from doc_processor import process_markdown_doc
+from modules.qa_chain import smart_talk
+from modules.vector_store import build_vectorstore_from_chunks
+from modules.doc_processor import process_markdown_doc
 import os
 import time
 st.set_page_config(page_title="rag文档回答助手", page_icon="📄")
