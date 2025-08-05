@@ -45,10 +45,11 @@ streamlit run app.py
 
 ```
 ├── app.py              # Streamlit 主界面
-├── qa_chain.py         # 问答链逻辑
-├── doc_processor.py    # 文档处理与分块
-├── vector_store.py     # 向量存储管理
-└── md/                 # 测试文档目录
+├── modules/
+│   ├── qa_chain.py         # 问答链逻辑
+│   ├── doc_processor.py    # 文档处理与分块
+│   └── vector_store.py     # 向量存储管理
+└── temp/               # 临时文档目录
 ```
 
 ## 技术实现
